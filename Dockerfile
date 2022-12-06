@@ -7,6 +7,7 @@ ENV TZ=Europe/Moscow
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
 ARG COMPOSER_VERSION="2.1.9"
+ARG OLD_COMPOSER_VERSION="1.10.26"
 
 RUN set -ex && \
     apt-get update && apt-get install -y \
@@ -46,6 +47,9 @@ RUN pecl install xdebug-3.1.1 \
 
 RUN wget https://getcomposer.org/download/${COMPOSER_VERSION}/composer.phar -O /usr/local/bin/composer && \
     chmod a+rx /usr/local/bin/composer
+
+RUN wget https://getcomposer.org/download/${OLD_COMPOSER_VERSION}/composer.phar -O /usr/local/bin/composer1 && \
+    chmod a+rx /usr/local/bin/composer1
 
 RUN groupadd --gid 1000 1000 && \
     usermod --non-unique --uid 1000 www-data && \
