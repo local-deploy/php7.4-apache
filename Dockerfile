@@ -6,7 +6,7 @@ ENV TZ=Europe/Moscow
 
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-ARG COMPOSER_VERSION="2.1.9"
+ARG COMPOSER_VERSION="2.5.4"
 ARG OLD_COMPOSER_VERSION="1.10.26"
 
 RUN set -ex && \
